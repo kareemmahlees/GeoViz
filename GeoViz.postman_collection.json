@@ -600,6 +600,516 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "Get all projects",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/projects/all",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"projects",
+								"all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/projects/all",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"projects",
+										"all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "275"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"113-5fx4A1kejEdExsEZzisHR0JQt6s\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Feb 2023 18:33:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 12,\n        \"created_at\": \"2023-02-02T18:02:52.967533+00:00\",\n        \"name\": \"something else\",\n        \"description\": \"lorem ipsum\",\n        \"location\": \"some location\"\n    },\n    {\n        \"id\": 16,\n        \"created_at\": \"2023-02-02T18:19:02.797357+00:00\",\n        \"name\": \"something else\",\n        \"description\": \"lorem ipsum\",\n        \"location\": \"some location\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Create project",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"project name\",\r\n    \"description\":\"project description\",\r\n    \"location\":\"project location\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/projects/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"projects",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"project 1\",\r\n    \"description\":\"lorem ipsum\",\r\n    \"location\":\"some location\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/projects/create",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"projects",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "133"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"85-HbMER3RU5sWuK/QKtr34ZKUyIuc\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Feb 2023 18:29:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 17,\n        \"created_at\": \"2023-02-02T18:29:58.887565+00:00\",\n        \"name\": \"project 1\",\n        \"description\": \"lorem ipsum\",\n        \"location\": \"some location\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Update project",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Hello\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/projects/update/:project_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"projects",
+								"update",
+								":project_id"
+							],
+							"variable": [
+								{
+									"key": "project_id",
+									"value": "18"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Hello\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/projects/update/:project_id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"projects",
+										"update",
+										":project_id"
+									],
+									"variable": [
+										{
+											"key": "project_id",
+											"value": "17"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "178"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b2-aDg9xhEUybdOf4elkzJrAhu8oo0\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Feb 2023 18:30:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 17,\n        \"created_at\": \"2023-02-02T18:29:58.887565+00:00\",\n        \"name\": \"Hello\",\n        \"description\": \"lorem ipsum\",\n        \"location\": \"some location\",\n        \"user_id\": \"28a2d2a8-d707-471a-8729-965188dac423\"\n    }\n]"
+						},
+						{
+							"name": "Fail: update a project that doesn't belong to the user",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Hello\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/projects/update/:project_id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"projects",
+										"update",
+										":project_id"
+									],
+									"variable": [
+										{
+											"key": "project_id",
+											"value": "18"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "92"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5c-dQLiCpEeQkslIcx5fIPu11U+enk\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Feb 2023 19:08:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 401,\n    \"message\": \"unauthorized\",\n    \"error\": \"User is not authorized for this action\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/projects/delete/:project_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"projects",
+								"delete",
+								":project_id"
+							],
+							"variable": [
+								{
+									"key": "project_id",
+									"value": "18"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/projects/delete/:project_id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"projects",
+										"delete",
+										":project_id"
+									],
+									"variable": [
+										{
+											"key": "project_id",
+											"value": "16"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"0-2jmj7l5rSw0yVb/vlWAYkK/YBwk\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Feb 2023 18:49:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Fail: delete a project that is not owned by the user",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/projects/delete/:project_id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"projects",
+										"delete",
+										":project_id"
+									],
+									"variable": [
+										{
+											"key": "project_id",
+											"value": "18"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "92"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5c-dQLiCpEeQkslIcx5fIPu11U+enk\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Feb 2023 19:10:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 401,\n    \"message\": \"unauthorized\",\n    \"error\": \"User is not authorized for this action\"\n}"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNjc1MzY1MjIzLCJzdWIiOiIyOGEyZDJhOC1kNzA3LTQ3MWEtODcyOS05NjUxODhkYWM0MjMiLCJlbWFpbCI6ImthcmVlbW1haGxlZXNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6eyJmaXJzdF9uYW1lIjoia2FyZWVtIiwiZ2VuZGVyIjoibWFsZSIsImxhc3RfbmFtZSI6Im1haGxlZXMifSwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJhYWwiOiJhYWwxIiwiYW1yIjpbeyJtZXRob2QiOiJwYXNzd29yZCIsInRpbWVzdGFtcCI6MTY3NTM2MTYyM31dLCJzZXNzaW9uX2lkIjoiNDFjZTAyZGMtMTVkNy00NzQ2LTk2MzQtZjQ1MmY1NmVkOGQ4In0.ViXs0fgrUb2CXynvMisrnymqTqpmcxse5g-4_837iQw",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
 		}
 	]
 }
