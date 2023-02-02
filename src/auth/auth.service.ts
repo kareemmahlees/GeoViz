@@ -64,7 +64,19 @@ export class AuthService {
         };
     }
 
-    // async getUserProfile(jwt: string) {
-
-    // }
+    async getUserProfile(req: Request) {
+        const user_id = req['user']['sub'];
+        const { data: user_data, error } = await this.supabase
+            .from('profiles')
+            .select('*')
+            .eq('id', user_id);
+        if (error != null) {
+            throw new HttpException(error.message, 401);
+        }
+        const { data: avatar_url } = await this.supabase.storage
+            .from('avatars')
+            .createSignedUrl(`${user_id}.png`, 3600);
+        user_data[0]['avatar_url'] = avatar_url;
+        return user_data[0];
+    }
 }

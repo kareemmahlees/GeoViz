@@ -1,16 +1,19 @@
 import {
     Body,
     Controller,
-    // Get,
+    Get,
     // Headers,
     Post,
     UploadedFile,
     UseInterceptors,
+    UseGuards,
+    Request,
 } from '@nestjs/common';
 import { RefreshTokenDTO, UserSignInDTO, UserSignUpDTO } from '../dto';
 import { AuthService } from './auth.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Express } from 'express';
+import { SupabaseGuard } from 'src/supabase/supabase.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -35,8 +38,9 @@ export class AuthController {
         return await this.authService.refreshToken(payload);
     }
 
-    // @Get('/profile')
-    // async getUserProfile(@Headers('Authorization') jwt: string) {
-    //     return await this.authService.getUserProfile(jwt);
-    // }
+    @Get('/profile')
+    @UseGuards(SupabaseGuard)
+    async getUserProfile(@Request() req) {
+        return await this.authService.getUserProfile(req);
+    }
 }

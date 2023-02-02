@@ -7,178 +7,11 @@
 	},
 	"item": [
 		{
-			"name": "Sign up",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "email",
-							"value": "kareemmahlees@gmail.com",
-							"type": "text"
-						},
-						{
-							"key": "phone",
-							"value": "+201006007952",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "password123",
-							"type": "text"
-						},
-						{
-							"key": "first_name",
-							"value": "kareem",
-							"type": "text"
-						},
-						{
-							"key": "last_name",
-							"value": "mahlees",
-							"type": "text"
-						},
-						{
-							"key": "gender",
-							"value": "male",
-							"type": "text"
-						},
-						{
-							"key": "avatar",
-							"type": "file",
-							"src": "/C:/Users/karee/Desktop/89863279.png"
-						}
-					]
-				},
-				"url": {
-					"raw": "{{base_url}}/auth/sign-up",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"auth",
-						"sign-up"
-					]
-				}
-			},
-			"response": [
+			"name": "User",
+			"item": [
 				{
-					"name": "Fail: empty body",
-					"originalRequest": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/auth/sign-up",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"auth",
-								"sign-up"
-							]
-						}
-					},
-					"status": "Bad Request",
-					"code": 400,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "177"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"b1-kZjWCwxhHuLev67bjLJa9GS9PLE\""
-						},
-						{
-							"key": "Date",
-							"value": "Wed, 01 Feb 2023 17:36:06 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"statusCode\": 400,\n    \"message\": [\n        \"email must be an email\",\n        \"password must not be less than 8\",\n        \"password must be a string\",\n        \"phone must be a valid phone number\"\n    ],\n    \"error\": \"Bad Request\"\n}"
-				},
-				{
-					"name": "Success: Signing in user",
-					"originalRequest": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"kareemmahlees@gmail.com\",\r\n    \"password\":\"password123\",\r\n    \"phone\":\"+201006007952\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{base_url}}/auth/sign-up",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"auth",
-								"sign-up"
-							]
-						}
-					},
-					"status": "Created",
-					"code": 201,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "763"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"2fb-fRJBpZVvxyOzWghrJTwLS9p7B6k\""
-						},
-						{
-							"key": "Date",
-							"value": "Wed, 01 Feb 2023 17:55:05 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"data\": {\n        \"user\": {\n            \"id\": \"e634c288-764f-43ad-a744-ee8102aaff6a\",\n            \"aud\": \"authenticated\",\n            \"role\": \"authenticated\",\n            \"email\": \"kareemmahlees@gmail.com\",\n            \"phone\": \"\",\n            \"confirmation_sent_at\": \"2023-02-01T17:55:07.458254321Z\",\n            \"app_metadata\": {\n                \"provider\": \"email\",\n                \"providers\": [\n                    \"email\"\n                ]\n            },\n            \"user_metadata\": {},\n            \"identities\": [\n                {\n                    \"id\": \"e634c288-764f-43ad-a744-ee8102aaff6a\",\n                    \"user_id\": \"e634c288-764f-43ad-a744-ee8102aaff6a\",\n                    \"identity_data\": {\n                        \"email\": \"kareemmahlees@gmail.com\",\n                        \"sub\": \"e634c288-764f-43ad-a744-ee8102aaff6a\"\n                    },\n                    \"provider\": \"email\",\n                    \"last_sign_in_at\": \"2023-02-01T17:55:07.455654557Z\",\n                    \"created_at\": \"2023-02-01T17:55:07.455698Z\",\n                    \"updated_at\": \"2023-02-01T17:55:07.455698Z\"\n                }\n            ],\n            \"created_at\": \"2023-02-01T17:55:07.447974Z\",\n            \"updated_at\": \"2023-02-01T17:55:08.054687Z\"\n        },\n        \"session\": null\n    },\n    \"error\": null\n}"
-				},
-				{
-					"name": "Sign up already signed up user",
-					"originalRequest": {
+					"name": "Sign up",
+					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -216,16 +49,10 @@
 								},
 								{
 									"key": "avatar",
-									"description": "put the user uploaded avatar here ",
 									"type": "file",
 									"src": "/C:/Users/karee/Desktop/89863279.png"
 								}
-							],
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							]
 						},
 						"url": {
 							"raw": "{{base_url}}/auth/sign-up",
@@ -238,134 +65,223 @@
 							]
 						}
 					},
-					"status": "Bad Request",
-					"code": 400,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "34"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"22-0oOiWs3RXeELl2DfDe54pOY5+ZY\""
-						},
-						{
-							"key": "Date",
-							"value": "Wed, 01 Feb 2023 19:59:30 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"error\": \"User already signed in\"\n}"
-				}
-			]
-		},
-		{
-			"name": "Sign in",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"email\":\"kareemmahlees@gmail.com\",\r\n    \"password\":\"password123\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/auth/sign-in",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"auth",
-						"sign-in"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "Fail: invalid login credentials",
-					"originalRequest": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"somethign@gmail.com\",\r\n    \"password\":\"passwod123\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"name": "Fail: empty body",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/auth/sign-up",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"sign-up"
+									]
 								}
-							}
-						},
-						"url": {
-							"raw": "{{base_url}}/auth/sign-in",
-							"host": [
-								"{{base_url}}"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "177"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b1-kZjWCwxhHuLev67bjLJa9GS9PLE\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 01 Feb 2023 17:36:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
 							],
-							"path": [
-								"auth",
-								"sign-in"
-							]
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"message\": [\n        \"email must be an email\",\n        \"password must not be less than 8\",\n        \"password must be a string\",\n        \"phone must be a valid phone number\"\n    ],\n    \"error\": \"Bad Request\"\n}"
+						},
+						{
+							"name": "Success: Signing in user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"kareemmahlees@gmail.com\",\r\n    \"password\":\"password123\",\r\n    \"phone\":\"+201006007952\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/sign-up",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"sign-up"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "763"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2fb-fRJBpZVvxyOzWghrJTwLS9p7B6k\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 01 Feb 2023 17:55:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"user\": {\n            \"id\": \"e634c288-764f-43ad-a744-ee8102aaff6a\",\n            \"aud\": \"authenticated\",\n            \"role\": \"authenticated\",\n            \"email\": \"kareemmahlees@gmail.com\",\n            \"phone\": \"\",\n            \"confirmation_sent_at\": \"2023-02-01T17:55:07.458254321Z\",\n            \"app_metadata\": {\n                \"provider\": \"email\",\n                \"providers\": [\n                    \"email\"\n                ]\n            },\n            \"user_metadata\": {},\n            \"identities\": [\n                {\n                    \"id\": \"e634c288-764f-43ad-a744-ee8102aaff6a\",\n                    \"user_id\": \"e634c288-764f-43ad-a744-ee8102aaff6a\",\n                    \"identity_data\": {\n                        \"email\": \"kareemmahlees@gmail.com\",\n                        \"sub\": \"e634c288-764f-43ad-a744-ee8102aaff6a\"\n                    },\n                    \"provider\": \"email\",\n                    \"last_sign_in_at\": \"2023-02-01T17:55:07.455654557Z\",\n                    \"created_at\": \"2023-02-01T17:55:07.455698Z\",\n                    \"updated_at\": \"2023-02-01T17:55:07.455698Z\"\n                }\n            ],\n            \"created_at\": \"2023-02-01T17:55:07.447974Z\",\n            \"updated_at\": \"2023-02-01T17:55:08.054687Z\"\n        },\n        \"session\": null\n    },\n    \"error\": null\n}"
+						},
+						{
+							"name": "Sign up already signed up user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "kareemmahlees@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "+201006007952",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "password123",
+											"type": "text"
+										},
+										{
+											"key": "first_name",
+											"value": "kareem",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "mahlees",
+											"type": "text"
+										},
+										{
+											"key": "gender",
+											"value": "male",
+											"type": "text"
+										},
+										{
+											"key": "avatar",
+											"description": "put the user uploaded avatar here ",
+											"type": "file",
+											"src": "/C:/Users/karee/Desktop/89863279.png"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/sign-up",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"sign-up"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "34"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"22-0oOiWs3RXeELl2DfDe54pOY5+ZY\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 01 Feb 2023 19:59:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"User already signed in\"\n}"
 						}
-					},
-					"status": "Bad Request",
-					"code": 400,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "56"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"38-lsGtWyyTmdKAcaGqY6p6T0y6fj0\""
-						},
-						{
-							"key": "Date",
-							"value": "Wed, 01 Feb 2023 20:03:04 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"statusCode\": 400,\n    \"message\": \"Invalid login credentials\"\n}"
+					]
 				},
 				{
-					"name": "Success",
-					"originalRequest": {
+					"name": "Sign in",
+					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -388,73 +304,134 @@
 							]
 						}
 					},
-					"status": "Created",
-					"code": 201,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "X-Powered-By",
-							"value": "Express"
+							"name": "Fail: invalid login credentials",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"somethign@gmail.com\",\r\n    \"password\":\"passwod123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/sign-in",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"sign-in"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "56"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"38-lsGtWyyTmdKAcaGqY6p6T0y6fj0\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 01 Feb 2023 20:03:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"message\": \"Invalid login credentials\"\n}"
 						},
 						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "1673"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"689-l+J5zSN5OeIjZZ79M9MhlStmCR4\""
-						},
-						{
-							"key": "Date",
-							"value": "Wed, 01 Feb 2023 20:06:34 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"kareemmahlees@gmail.com\",\r\n    \"password\":\"password123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/sign-in",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"sign-in"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1673"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"689-l+J5zSN5OeIjZZ79M9MhlStmCR4\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 01 Feb 2023 20:06:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNjc1Mjg1NTk2LCJzdWIiOiIyOGEyZDJhOC1kNzA3LTQ3MWEtODcyOS05NjUxODhkYWM0MjMiLCJlbWFpbCI6ImthcmVlbW1haGxlZXNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6eyJmaXJzdF9uYW1lIjoia2FyZWVtIiwiZ2VuZGVyIjoibWFsZSIsImxhc3RfbmFtZSI6Im1haGxlZXMifSwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJhYWwiOiJhYWwxIiwiYW1yIjpbeyJtZXRob2QiOiJwYXNzd29yZCIsInRpbWVzdGFtcCI6MTY3NTI4MTk5Nn1dLCJzZXNzaW9uX2lkIjoiMzFiZTY5NGEtOTM0OC00NzQ4LWFiYzQtYWFjZjA3ZGM1NTAzIn0.U66l4fKUivIs04YSWca24s4hl9RQuzmaDSK0BJ6e5pE\",\n    \"token_type\": \"bearer\",\n    \"expires_in\": 3600,\n    \"refresh_token\": \"fIFMVOkTw364LhyW5DtxuQ\",\n    \"user\": {\n        \"id\": \"28a2d2a8-d707-471a-8729-965188dac423\",\n        \"aud\": \"authenticated\",\n        \"role\": \"authenticated\",\n        \"email\": \"kareemmahlees@gmail.com\",\n        \"email_confirmed_at\": \"2023-02-01T19:47:31.666355Z\",\n        \"phone\": \"\",\n        \"confirmation_sent_at\": \"2023-02-01T19:46:44.461299Z\",\n        \"confirmed_at\": \"2023-02-01T19:47:31.666355Z\",\n        \"last_sign_in_at\": \"2023-02-01T20:06:36.960888097Z\",\n        \"app_metadata\": {\n            \"provider\": \"email\",\n            \"providers\": [\n                \"email\"\n            ]\n        },\n        \"user_metadata\": {\n            \"first_name\": \"kareem\",\n            \"gender\": \"male\",\n            \"last_name\": \"mahlees\"\n        },\n        \"identities\": [\n            {\n                \"id\": \"28a2d2a8-d707-471a-8729-965188dac423\",\n                \"user_id\": \"28a2d2a8-d707-471a-8729-965188dac423\",\n                \"identity_data\": {\n                    \"email\": \"kareemmahlees@gmail.com\",\n                    \"sub\": \"28a2d2a8-d707-471a-8729-965188dac423\"\n                },\n                \"provider\": \"email\",\n                \"last_sign_in_at\": \"2023-02-01T19:46:44.458481Z\",\n                \"created_at\": \"2023-02-01T19:46:44.458515Z\",\n                \"updated_at\": \"2023-02-01T19:46:44.458515Z\"\n            }\n        ],\n        \"created_at\": \"2023-02-01T19:46:44.455342Z\",\n        \"updated_at\": \"2023-02-01T20:06:36.964223Z\"\n    },\n    \"expires_at\": 1675285594\n}"
 						}
-					],
-					"cookie": [],
-					"body": "{\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNjc1Mjg1NTk2LCJzdWIiOiIyOGEyZDJhOC1kNzA3LTQ3MWEtODcyOS05NjUxODhkYWM0MjMiLCJlbWFpbCI6ImthcmVlbW1haGxlZXNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6eyJmaXJzdF9uYW1lIjoia2FyZWVtIiwiZ2VuZGVyIjoibWFsZSIsImxhc3RfbmFtZSI6Im1haGxlZXMifSwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJhYWwiOiJhYWwxIiwiYW1yIjpbeyJtZXRob2QiOiJwYXNzd29yZCIsInRpbWVzdGFtcCI6MTY3NTI4MTk5Nn1dLCJzZXNzaW9uX2lkIjoiMzFiZTY5NGEtOTM0OC00NzQ4LWFiYzQtYWFjZjA3ZGM1NTAzIn0.U66l4fKUivIs04YSWca24s4hl9RQuzmaDSK0BJ6e5pE\",\n    \"token_type\": \"bearer\",\n    \"expires_in\": 3600,\n    \"refresh_token\": \"fIFMVOkTw364LhyW5DtxuQ\",\n    \"user\": {\n        \"id\": \"28a2d2a8-d707-471a-8729-965188dac423\",\n        \"aud\": \"authenticated\",\n        \"role\": \"authenticated\",\n        \"email\": \"kareemmahlees@gmail.com\",\n        \"email_confirmed_at\": \"2023-02-01T19:47:31.666355Z\",\n        \"phone\": \"\",\n        \"confirmation_sent_at\": \"2023-02-01T19:46:44.461299Z\",\n        \"confirmed_at\": \"2023-02-01T19:47:31.666355Z\",\n        \"last_sign_in_at\": \"2023-02-01T20:06:36.960888097Z\",\n        \"app_metadata\": {\n            \"provider\": \"email\",\n            \"providers\": [\n                \"email\"\n            ]\n        },\n        \"user_metadata\": {\n            \"first_name\": \"kareem\",\n            \"gender\": \"male\",\n            \"last_name\": \"mahlees\"\n        },\n        \"identities\": [\n            {\n                \"id\": \"28a2d2a8-d707-471a-8729-965188dac423\",\n                \"user_id\": \"28a2d2a8-d707-471a-8729-965188dac423\",\n                \"identity_data\": {\n                    \"email\": \"kareemmahlees@gmail.com\",\n                    \"sub\": \"28a2d2a8-d707-471a-8729-965188dac423\"\n                },\n                \"provider\": \"email\",\n                \"last_sign_in_at\": \"2023-02-01T19:46:44.458481Z\",\n                \"created_at\": \"2023-02-01T19:46:44.458515Z\",\n                \"updated_at\": \"2023-02-01T19:46:44.458515Z\"\n            }\n        ],\n        \"created_at\": \"2023-02-01T19:46:44.455342Z\",\n        \"updated_at\": \"2023-02-01T20:06:36.964223Z\"\n    },\n    \"expires_at\": 1675285594\n}"
-				}
-			]
-		},
-		{
-			"name": "Refresh token",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVC.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNjc1Mjg1NTk2LCJzdWIiOiIyOGEyZDJhOC1kNzA3LTQ3MWEtODcyOS05NjUxODhkYWM0MjMiLCJlbWFpbCI6ImthcmVlbW1haGxlZXNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6eyJmaXJzdF9uYW1lIjoia2FyZWVtIiwiZ2VuZGVyIjoibWFsZSIsImxhc3RfbmFtZSI6Im1haGxlZXMifSwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJhYWwiOiJhYWwxIiwiYW1yIjpbeyJtZXRob2QiOiJwYXNzd29yZCIsInRpbWVzdGFtcCI6MTY3NTI4MTk5Nn1dLCJzZXNzaW9uX2lkIjoiMzFiZTY5NGEtOTM0OC00NzQ4LWFiYzQtYWFjZjA3ZGM1NTAzIn0.U66l4fKUivIs04YSWca24s4hl9RQuzmaDSK0BJ6e5pE\",\r\n\"refresh_token\": \"fIFMVOkTw364LhyW5DtxuQ\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/auth/refresh-token",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"auth",
-						"refresh-token"
 					]
-				}
-			},
-			"response": [
+				},
 				{
-					"name": "Invalid JWT",
-					"originalRequest": {
+					"name": "Refresh token",
+					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -477,41 +454,150 @@
 							]
 						}
 					},
-					"status": "Unauthorized",
-					"code": 401,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "109"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"6d-nO7nI8WoqyxDwSWOVV0C0itc5yA\""
-						},
-						{
-							"key": "Date",
-							"value": "Wed, 01 Feb 2023 20:32:04 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
+							"name": "Invalid JWT",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVC.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNjc1Mjg1NTk2LCJzdWIiOiIyOGEyZDJhOC1kNzA3LTQ3MWEtODcyOS05NjUxODhkYWM0MjMiLCJlbWFpbCI6ImthcmVlbW1haGxlZXNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6eyJmaXJzdF9uYW1lIjoia2FyZWVtIiwiZ2VuZGVyIjoibWFsZSIsImxhc3RfbmFtZSI6Im1haGxlZXMifSwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJhYWwiOiJhYWwxIiwiYW1yIjpbeyJtZXRob2QiOiJwYXNzd29yZCIsInRpbWVzdGFtcCI6MTY3NTI4MTk5Nn1dLCJzZXNzaW9uX2lkIjoiMzFiZTY5NGEtOTM0OC00NzQ4LWFiYzQtYWFjZjA3ZGM1NTAzIn0.U66l4fKUivIs04YSWca24s4hl9RQuzmaDSK0BJ6e5pE\",\r\n\"refresh_token\": \"fIFMVOkTw364LhyW5DtxuQ\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/refresh-token",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"refresh-token"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "109"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6d-nO7nI8WoqyxDwSWOVV0C0itc5yA\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 01 Feb 2023 20:32:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 401,\n    \"message\": \"invalid JWT: unable to parse or verify signature, unexpected end of JSON input\"\n}"
 						}
-					],
-					"cookie": [],
-					"body": "{\n    \"statusCode\": 401,\n    \"message\": \"invalid JWT: unable to parse or verify signature, unexpected end of JSON input\"\n}"
+					]
+				},
+				{
+					"name": "Get user profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNjc1MzMxMDY2LCJzdWIiOiIyOGEyZDJhOC1kNzA3LTQ3MWEtODcyOS05NjUxODhkYWM0MjMiLCJlbWFpbCI6ImthcmVlbW1haGxlZXNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6eyJmaXJzdF9uYW1lIjoia2FyZWVtIiwiZ2VuZGVyIjoibWFsZSIsImxhc3RfbmFtZSI6Im1haGxlZXMifSwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJhYWwiOiJhYWwxIiwiYW1yIjpbeyJtZXRob2QiOiJwYXNzd29yZCIsInRpbWVzdGFtcCI6MTY3NTMyNzQ2Nn1dLCJzZXNzaW9uX2lkIjoiOWE1ZDY2YmQtMGU1ZC00ZDhlLWIwZTMtZTgwMzQyMmEyNjJlIn0.W38BU-OiEenXBk6AwsR--eMen1Rewk3psXqGZx5c1QY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/auth/profile",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success: Get user profile",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/auth/profile",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "506"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1fa-SjS8RX9OWPMxPA4RRWAVjCjOf3E\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Feb 2023 12:45:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"28a2d2a8-d707-471a-8729-965188dac423\",\n    \"created_at\": \"2023-02-01T19:46:44.371656+00:00\",\n    \"first_name\": \"kareem\",\n    \"last_name\": \"mahlees\",\n    \"gender\": \"male\",\n    \"avatar_url\": {\n        \"signedUrl\": \"https://bgxuydpscyjocqpmpjwk.supabase.co/storage/v1/object/sign/avatars/28a2d2a8-d707-471a-8729-965188dac423.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhdmF0YXJzLzI4YTJkMmE4LWQ3MDctNDcxYS04NzI5LTk2NTE4OGRhYzQyMy5wbmciLCJpYXQiOjE2NzUzNDE5MzEsImV4cCI6MTY3NTM0NTUzMX0.H-8RChsgWfIpYCwtJIomAjceXUTeJ4O-MM_KZqEm3Tc\"\n    }\n}"
+						}
+					]
 				}
 			]
 		}

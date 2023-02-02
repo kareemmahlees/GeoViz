@@ -9,6 +9,12 @@ export class SupabaseService extends SupabaseClient<Database> {
         super(
             configService.get<string>('SUPABASE_URL'),
             configService.get<string>('SUPABASE_KEY'),
+            {
+                auth: {
+                    autoRefreshToken: true,
+                    detectSessionInUrl: false,
+                },
+            },
         );
     }
 }
