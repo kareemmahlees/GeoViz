@@ -1,0 +1,16 @@
+@import "../../styles/variables.scss";
+
+.main__button {
+  background-color: transparent;
+  padding: 14px 40px;
+  border-radius: 4px;
+  font-size: $ft__20;
+  font-weight: $ft__W__S;
+  border-radius: 50px;
+  border: 2px solid $color__white;
+  color: $color__white;
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
