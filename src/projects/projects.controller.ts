@@ -4,27 +4,39 @@ import {
     Delete,
     Get,
     Param,
-    ParseIntPipe,
+    ParseUUIDPipe,
+    Patch,
     Post,
-    Put,
     Req,
     UseGuards,
 } from '@nestjs/common';
 import { SupabaseGuard } from 'src/supabase/supabase.guard';
 import { Request } from 'express';
 import { ProjectsService } from './projects.service';
-import { CreateProjectDTO, UpdateProjectDTO } from 'src/dto/project.dto';
+import { CreateProjectDTO, UpdateProjectDTO } from './dto';
 
 @Controller('projects')
 @UseGuards(SupabaseGuard)
 export class ProjectsController {
     constructor(private readonly projectsService: ProjectsService) {}
+
     @Get('/all')
     async getAllProjects(@Req() req: Request) {
         return await this.projectsService.getAllProjects(req['user']['sub']);
     }
 
-    @Post('/create')
+    @Get('/:project_id')
+    async getProjectData(
+        @Param('project_id', ParseUUIDPipe) projectId: string,
+        @Req() request: Request,
+    ) {
+        return await this.projectsService.getProjectDetails(
+            projectId,
+            request['user']['sub'],
+        );
+    }
+
+    @Post()
     async createProject(
         @Body() projectData: CreateProjectDTO,
         @Req() request: Request,
@@ -33,9 +45,9 @@ export class ProjectsController {
         return await this.projectsService.createProject(projectData);
     }
 
-    @Put('/update/:project_id')
+    @Patch(':project_id')
     async updateProject(
-        @Param('project_id', ParseIntPipe) projectId: number,
+        @Param('project_id', ParseUUIDPipe) projectId: string,
         @Body() updateProjectData: UpdateProjectDTO,
         @Req() request: Request,
     ) {
@@ -46,9 +58,9 @@ export class ProjectsController {
         );
     }
 
-    @Delete('/delete/:project_id')
+    @Delete(':project_id')
     async deleteProject(
-        @Param('project_id', ParseIntPipe) projectId: number,
+        @Param('project_id', ParseUUIDPipe) projectId: string,
         @Req() request: string,
     ) {
         return await this.projectsService.deleteProject(

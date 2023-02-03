@@ -26,20 +26,3 @@ export class UserSignUpDTO {
     @IsIn(['male', 'female'])
     gender: string;
 }
-
-export class UserSignInDTO {
-    @IsEmail()
-    email: string;
-
-    @Length(8)
-    @IsString()
-    password: string;
-}
-
-export class RefreshTokenDTO {
-    @IsString()
-    access_token: string;
-
-    @IsString()
-    refresh_token: string;
-}

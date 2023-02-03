@@ -2,14 +2,13 @@ import {
     Body,
     Controller,
     Get,
-    // Headers,
     Post,
     UploadedFile,
     UseInterceptors,
     UseGuards,
     Request,
 } from '@nestjs/common';
-import { RefreshTokenDTO, UserSignInDTO, UserSignUpDTO } from '../dto';
+import { RefreshTokenDTO, UserSignInDTO, UserSignUpDTO } from './dto';
 import { AuthService } from './auth.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Express } from 'express';

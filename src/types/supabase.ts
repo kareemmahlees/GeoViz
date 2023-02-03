@@ -36,7 +36,7 @@ export interface Database {
         Row: {
           created_at: string | null
           description: string
-          id: number
+          id: string
           location: string
           name: string
           user_id: string | null
@@ -44,7 +44,7 @@ export interface Database {
         Insert: {
           created_at?: string | null
           description: string
-          id?: number
+          id?: string
           location: string
           name: string
           user_id?: string | null
@@ -52,7 +52,7 @@ export interface Database {
         Update: {
           created_at?: string | null
           description?: string
-          id?: number
+          id?: string
           location?: string
           name?: string
           user_id?: string | null
@@ -61,37 +61,40 @@ export interface Database {
       wells: {
         Row: {
           created_at: string | null
-          id: number
+          id: string
           kb: string | null
           log_file_id: string | null
           name: string | null
-          project_id: number | null
+          project_id: string | null
           td: string | null
           trajectory: string | null
+          user_id: string | null
           x_location: string | null
           y_location: string | null
         }
         Insert: {
           created_at?: string | null
-          id?: number
+          id?: string
           kb?: string | null
           log_file_id?: string | null
           name?: string | null
-          project_id?: number | null
+          project_id?: string | null
           td?: string | null
           trajectory?: string | null
+          user_id?: string | null
           x_location?: string | null
           y_location?: string | null
         }
         Update: {
           created_at?: string | null
-          id?: number
+          id?: string
           kb?: string | null
           log_file_id?: string | null
           name?: string | null
-          project_id?: number | null
+          project_id?: string | null
           td?: string | null
           trajectory?: string | null
+          user_id?: string | null
           x_location?: string | null
           y_location?: string | null
         }

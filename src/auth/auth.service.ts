@@ -1,5 +1,5 @@
 import { BadRequestException, HttpException, Injectable } from '@nestjs/common';
-import { UserSignUpDTO, UserSignInDTO, RefreshTokenDTO } from 'src/dto';
+import { UserSignUpDTO, UserSignInDTO, RefreshTokenDTO } from 'src/auth/dto';
 import { SupabaseService } from 'src/supabase/supabase.service';
 import { Express } from 'express';
 
