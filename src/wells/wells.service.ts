@@ -10,6 +10,29 @@ import { SupabaseService } from 'src/supabase/supabase.service';
 export class WellsService {
     constructor(private readonly supabase: SupabaseService) {}
 
+    async get(wellId: string, userId: string) {
+        const { data, error } = await this.supabase
+            .from('wells')
+            .select('*,logs(created_at,name,id)')
+            .eq('id', wellId)
+            .eq('user_id', userId)
+            .single();
+
+        if (!data) {
+            throw new NotFoundException(
+                'not found',
+                `well with id ${wellId} doesn't exist`,
+            );
+        }
+        if (error != null) {
+            throw new InternalServerErrorException(error.message, {
+                description: error.details,
+            });
+        }
+        delete data.user_id;
+        return data;
+    }
+
     async create(projectId: string, userId: string, wellData: CreateWellDto) {
         wellData['project_id'] = projectId;
         wellData['user_id'] = userId;

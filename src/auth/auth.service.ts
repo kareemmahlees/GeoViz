@@ -1,4 +1,8 @@
-import { BadRequestException, HttpException, Injectable } from '@nestjs/common';
+import {
+    BadRequestException,
+    Injectable,
+    InternalServerErrorException,
+} from '@nestjs/common';
 import { UserSignUpDTO, UserSignInDTO, RefreshTokenDTO } from 'src/auth/dto';
 import { SupabaseService } from 'src/supabase/supabase.service';
 import { Express } from 'express';
@@ -21,9 +25,7 @@ export class AuthService {
             },
         });
         if (error != null) {
-            throw new HttpException('something went wrong', error.status, {
-                cause: error,
-            });
+            throw new InternalServerErrorException(error.message);
         }
         if (data.user.identities.length === 0) {
             throw new BadRequestException({ error: 'User already signed in' });
@@ -41,8 +43,8 @@ export class AuthService {
         });
 
         if (error != null) {
-            throw new HttpException(error.message, error.status, {
-                cause: error,
+            throw new InternalServerErrorException(error.name, {
+                description: error.message,
             });
         }
         return data.session;
@@ -55,7 +57,9 @@ export class AuthService {
         });
 
         if (error != null) {
-            throw new HttpException(error.message, error.status);
+            throw new InternalServerErrorException(error.name, {
+                description: error.message,
+            });
         }
 
         return {
@@ -71,7 +75,9 @@ export class AuthService {
             .select('*')
             .eq('id', user_id);
         if (error != null) {
-            throw new HttpException(error.message, 401);
+            throw new InternalServerErrorException(error.message, {
+                description: error.details,
+            });
         }
         const { data: avatar_url } = await this.supabase.storage
             .from('avatars')

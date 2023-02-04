@@ -6,6 +6,7 @@ import { SupabaseService } from './supabase/supabase.service';
 import { ProjectsModule } from './projects/projects.module';
 import { WellsModule } from './wells/wells.module';
 import { SupabaseModule } from './supabase/supabase.module';
+import { LogsModule } from './logs/logs.module';
 
 @Module({
     imports: [
@@ -14,6 +15,7 @@ import { SupabaseModule } from './supabase/supabase.module';
         ProjectsModule,
         WellsModule,
         SupabaseModule,
+        LogsModule,
     ],
     providers: [SupabaseStrategy, SupabaseService],
 })

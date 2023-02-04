@@ -20,6 +20,14 @@ import { Request } from 'express';
 export class WellsController {
     constructor(private readonly wellsService: WellsService) {}
 
+    @Get(':well_id')
+    get(
+        @Param('well_id', ParseUUIDPipe) wellId: string,
+        @Req() request: Request,
+    ) {
+        return this.wellsService.get(wellId, request['user']['sub']);
+    }
+
     @Post(':project_id')
     create(
         @Param('project_id', ParseUUIDPipe) projectId: string,
