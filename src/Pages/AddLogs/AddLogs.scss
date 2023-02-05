@@ -1,0 +1,20 @@
+@import "../../styles/variables.scss";
+
+.add__file__btn {
+  color: $color__white;
+  background-color: $main__color;
+  padding: 14px 26px;
+  border-radius: 14px;
+  font-size: $ft__20;
+  font-weight: $ft__W__M;
+  transition: 0.3s ease-in-out;
+  border: 3px solid $main__color;
+  cursor: pointer;
+  &:hover {
+    border-color: black;
+    color: black;
+  }
+}
+.add__file__input {
+  display: none;
+}

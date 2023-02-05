@@ -1,3 +1,9 @@
 export { default as Register } from "./Register";
 export { default as Login } from "./Login";
 export { default as Projects } from "./Projects";
+export { default as NewProject } from "./NewProject";
+export { default as SingleProject } from "./SingleProject";
+export { default as WellForm } from "./WellForm";
+export { default as SingleWell } from "./SingleWell";
+export { default as SingleLogs } from "./SingleLogs";
+export { default as AddLogs } from "./AddLogs";

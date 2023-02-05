@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import api from "../../api";
+// import api from "../../api";
 
 export const register = createAsyncThunk(
   "auth/register",
@@ -7,7 +7,28 @@ export const register = createAsyncThunk(
     const { rejecteWithError } = thunkAPI;
 
     try {
-      const res = await api.post("", data);
+      // const res = await api.post("/auth/sign-up", data);
+
+      const formdata = new FormData();
+
+      formdata.append("first_name", data.first_name);
+      formdata.append("last_name", data.last_name);
+      formdata.append("email", data.email);
+      formdata.append("phone", data.phone);
+      formdata.append("password", data.password);
+      formdata.append("gender", data.gender);
+      formdata.append("avatar", data.avatar);
+
+      var requestOptions = {
+        method: "POST",
+        body: formdata,
+        redirect: "follow",
+      };
+
+      fetch("{{base_url}}/auth/sign-up", requestOptions)
+        .then((response) => response.text())
+        .then((result) => console.log(result))
+        .catch((error) => console.log("error", error));
     } catch (error) {
       return rejecteWithError(error.message);
     }

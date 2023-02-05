@@ -1,0 +1,18 @@
+@import "../Styles/variables.scss";
+
+.main__layout {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  .layout__content {
+    display: flex;
+    flex: 1;
+    .main__content {
+      padding: 20px;
+      background-color: $color__white;
+      // background-color: burlywood;
+      flex: 1;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+@import "../../Styles/variables.scss";
+
+.sidebar {
+  // width: 250px;
+  width: fit-content;
+  padding: 60px 30px;
+  background-color: $main__color;
+  color: $color__white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .user__image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: $color__white;
+    overflow: hidden;
+    margin-bottom: 30px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  h3.user__name {
+    font-size: $ft__22;
+    font-weight: $ft__W__M;
+  }
+  .links__list {
+    all: unset;
+    list-style: none;
+    margin-top: 30px;
+    .link {
+      font-size: $ft__18;
+      color: black;
+      background-color: $color__white;
+      width: 120px;
+      display: block;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50px;
+      font-weight: $ft__W__M;
+    }
+  }
+}

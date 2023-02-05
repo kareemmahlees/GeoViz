@@ -1,7 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { Login, Projects, Register } from "./Pages";
+import {
+  AddLogs,
+  Login,
+  NewProject,
+  Projects,
+  Register,
+  SingleLogs,
+  SingleProject,
+  SingleWell,
+  WellForm,
+} from "./Pages";
 import { useSelector } from "react-redux";
+import Layout from "./Layout";
 
 const App = () => {
   const token = useSelector((state) => state.auth.token);
@@ -13,8 +24,22 @@ const App = () => {
         element={<Navigate to={token ? "projects" : "register"} />}
       />
       <Route path="/register" element={<Register />} />
-      <Route path="/projects" element={<Projects />} />
       <Route path="/login" element={<Login />} />
+      <Route element={<Layout />}>
+        <Route path="/projects" element={<Projects />} />
+        <Route path="projects/:projectID" element={<SingleProject />} />
+        <Route path="projects/:projectID/add/:wellID" element={<WellForm />} />
+        <Route path="projects/:projectID/:wellID" element={<SingleWell />} />
+        <Route
+          path="projects/:projectID/:wellID/add/:logsID"
+          element={<AddLogs />}
+        />
+        <Route
+          path="projects/:projectID/:wellID/:logsID"
+          element={<SingleLogs />}
+        />
+        <Route path="/new-project" element={<NewProject />} />
+      </Route>
     </Routes>
   );
 };

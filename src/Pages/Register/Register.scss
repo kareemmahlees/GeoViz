@@ -49,6 +49,10 @@
     .form {
       display: flex;
       flex-direction: column;
+      .user__name-inputs {
+        display: flex;
+        gap: 20px;
+      }
     }
   }
 }
