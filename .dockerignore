@@ -1,0 +1,7 @@
+dist
+node_modules
+nest-cli.json
+private.pem
+.eslintrc.js
+.gitignore
+.prettierrrc
