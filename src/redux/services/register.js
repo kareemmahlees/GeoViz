@@ -19,13 +19,13 @@ export const register = createAsyncThunk(
       formdata.append("gender", data.gender);
       formdata.append("avatar", data.avatar);
 
-      var requestOptions = {
+      const requestOptions = {
         method: "POST",
         body: formdata,
         redirect: "follow",
       };
 
-      fetch("{{base_url}}/auth/sign-up", requestOptions)
+      fetch("http://localhost:3000/auth/sign-up", requestOptions)
         .then((response) => response.text())
         .then((result) => console.log(result))
         .catch((error) => console.log("error", error));

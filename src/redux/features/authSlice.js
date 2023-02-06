@@ -19,18 +19,20 @@ const authSlice = createSlice({
       state.error = null;
     },
     [register.fulfilled]: (state, action) => {
-      state.loading = false;
-      state.error = null;
-      state.user = action.payload.user;
-      state.token = action.payload.token;
-      localStorage.setItem("token", action.payload.token);
-      localStorage.setItem("user", JSON.stringify(action.payload.user));
+      // state.loading = false;
+      // state.error = null;
+      // state.user = action.payload.user;
+      // state.token = action.payload.token;
+      // localStorage.setItem("token", action.payload.token);
+      // localStorage.setItem("user", JSON.stringify(action.payload.user));
+      console.log(action);
     },
     [register.rejected]: (state, action) => {
-      state.loading = false;
-      state.user = null;
-      state.token = null;
-      state.error = action.payload;
+      // state.loading = false;
+      // state.user = null;
+      // state.token = null;
+      // state.error = action.payload;
+      console.log(action);
       console.log("error");
     },
   },

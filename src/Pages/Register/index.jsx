@@ -86,8 +86,6 @@ const Register = () => {
     formValidation = false;
   }
 
-  console.log(data);
-
   return (
     <div className="register__page">
       {/* <div className="clip-path"></div> */}
@@ -97,7 +95,7 @@ const Register = () => {
           className="form"
           onSubmit={(e) => {
             e.preventDefault();
-            console.log(data);
+            // console.log(data);
             dispatch(register(data));
           }}
         >
