@@ -6,7 +6,7 @@ import { SupabaseService } from './supabase/supabase.service';
 import { ProjectsModule } from './projects/projects.module';
 import { WellsModule } from './wells/wells.module';
 import { SupabaseModule } from './supabase/supabase.module';
-import { LogsModule } from './logs/logs.module';
+import { LogsModule } from './log/logs.module';
 
 @Module({
     imports: [
