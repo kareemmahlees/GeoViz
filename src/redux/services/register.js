@@ -25,11 +25,10 @@ export const register = createAsyncThunk(
         redirect: "follow",
       };
       const res = await fetch(
-        "http://localhost:3000/auth/sign-up",
+        "http://localhost:8000/auth/sign-up",
         requestOptions
       );
-      const data = await res.text();
-      return data;
+      return res.json();
     } catch (error) {
       return rejecteWithError(error.message);
     }

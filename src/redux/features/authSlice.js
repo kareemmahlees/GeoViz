@@ -32,7 +32,7 @@ const authSlice = createSlice({
       // state.user = null;
       // state.token = null;
       // state.error = action.payload;
-      console.log("error");
+      console.log(action);
     },
   },
   // login:======
