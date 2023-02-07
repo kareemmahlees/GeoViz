@@ -25,10 +25,11 @@ export class AuthService {
             },
         });
         if (err1 != null) {
-            throw new InternalServerErrorException(err1.message);
-        }
-        if (data.user.identities.length === 0) {
-            throw new BadRequestException({ error: 'User already signed in' });
+            if (err1.message === 'User already registered') {
+                throw new BadRequestException(err1.message);
+            } else {
+                throw new InternalServerErrorException(err1.message);
+            }
         }
         const { data: uploadedAvatar, error: err2 } =
             await this.supabase.storage
