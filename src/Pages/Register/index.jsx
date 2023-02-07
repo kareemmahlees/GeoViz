@@ -164,7 +164,10 @@ const Register = () => {
               value="femal"
             />
           </div>
-          <Button type="submit" disabled={!formValidation}>
+          <Button
+            type="submit"
+            // disabled={!formValidation}
+          >
             Register
           </Button>
         </form>

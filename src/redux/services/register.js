@@ -7,28 +7,29 @@ export const register = createAsyncThunk(
     const { rejecteWithError } = thunkAPI;
 
     try {
-      // const res = await api.post("/auth/sign-up", data);
+      // const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+      // const data = await res.json();
+      // return data;
 
       const formdata = new FormData();
-
+      formdata.append("avatar", data.avatar);
       formdata.append("first_name", data.first_name);
       formdata.append("last_name", data.last_name);
       formdata.append("email", data.email);
       formdata.append("phone", data.phone);
       formdata.append("password", data.password);
       formdata.append("gender", data.gender);
-      formdata.append("avatar", data.avatar);
-
       const requestOptions = {
         method: "POST",
         body: formdata,
         redirect: "follow",
       };
-
-      fetch("http://localhost:3000/auth/sign-up", requestOptions)
-        .then((response) => response.text())
-        .then((result) => console.log(result))
-        .catch((error) => console.log("error", error));
+      const res = await fetch(
+        "http://localhost:3000/auth/sign-up",
+        requestOptions
+      );
+      const data = await res.text();
+      return data;
     } catch (error) {
       return rejecteWithError(error.message);
     }
