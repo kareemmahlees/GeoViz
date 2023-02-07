@@ -8,10 +8,15 @@ import { WellsModule } from './wells/wells.module';
 import { SupabaseModule } from './supabase/supabase.module';
 import { LogsModule } from './log/logs.module';
 
+const ENV = process.env.NODE_ENV;
+
 @Module({
     imports: [
         AuthModule,
-        ConfigModule.forRoot({ isGlobal: true }),
+        ConfigModule.forRoot({
+            isGlobal: true,
+            envFilePath: !ENV ? '.env' : `.env.${ENV}`,
+        }),
         ProjectsModule,
         WellsModule,
         SupabaseModule,
