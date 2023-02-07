@@ -28,6 +28,7 @@ const authSlice = createSlice({
           last_name: action?.payload?.user_metadata?.last_name,
           gender: action?.payload?.user_metadata?.gender,
           email: action?.payload?.email,
+          // avatar:
         };
       }
     },

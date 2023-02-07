@@ -65,6 +65,15 @@ const Input = ({
         messages.includes("phone must be a valid phone number") && (
           <p className="error">phone must be a valid phone number</p>
         )}
+      {messages &&
+        id === "password" &&
+        messages.includes(
+          "password must be longer than or equal to 8 characters"
+        ) && (
+          <p className="error">
+            password must be longer than or equal to 8 characters
+          </p>
+        )}
     </div>
   );
 };
