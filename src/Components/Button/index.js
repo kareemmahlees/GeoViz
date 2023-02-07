@@ -1,14 +1,14 @@
 import React from "react";
 import "./Button.scss";
 
-const Button = ({ children, type, disabled }) => {
+const Button = ({ children, type, disabled, loading }) => {
   return (
     <button
-      className="main__button"
+      className={`main__button ${loading ? "loading" : ""}`}
       disabled={disabled}
       type={type || "button"}
     >
-      {children}
+      {loading ? "laoding..." : children}
     </button>
   );
 };

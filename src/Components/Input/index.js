@@ -10,6 +10,7 @@ const Input = ({
   data,
   setData,
   error,
+  messages,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [inputBlur, setInputBlur] = useState(false);
@@ -54,6 +55,16 @@ const Input = ({
           />
         ))}
       {error && errorInput && <p className="error">{error}</p>}
+      {messages &&
+        id === "email" &&
+        messages.includes("email must be an email") && (
+          <p className="error">email must be an email</p>
+        )}
+      {messages &&
+        id === "phone" &&
+        messages.includes("phone must be a valid phone number") && (
+          <p className="error">phone must be a valid phone number</p>
+        )}
     </div>
   );
 };

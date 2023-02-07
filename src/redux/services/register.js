@@ -7,10 +7,6 @@ export const register = createAsyncThunk(
     const { rejecteWithError } = thunkAPI;
 
     try {
-      // const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
-      // const data = await res.json();
-      // return data;
-
       const formdata = new FormData();
       formdata.append("avatar", data.avatar);
       formdata.append("first_name", data.first_name);

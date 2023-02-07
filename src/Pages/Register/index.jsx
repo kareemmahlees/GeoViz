@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Input, Button } from "../../Components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../redux/services";
 
 import "./Register.scss";
@@ -11,6 +11,9 @@ const Register = () => {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf8xdLG78TMYzKtF09m3yqmzo8-NmjgdxR3g&usqp=CAU"
   );
   const dispatch = useDispatch();
+  const loading = useSelector((state) => state.auth.loading);
+  const error = useSelector((state) => state.auth.error);
+  // const user = useSelector((state) => state.auth.user);
 
   const resources = [
     {
@@ -35,10 +38,10 @@ const Register = () => {
       error: "Email must includes '@'!",
     },
     {
-      type: "number",
+      type: "text",
       id: "phone",
       placeholder: "Phone number",
-      checkTheValue: (value) => value?.length > 6,
+      checkTheValue: (value) => value?.length > 7,
       error: "error",
     },
     {
@@ -77,7 +80,7 @@ const Register = () => {
   if (
     data?.username !== "" &&
     data?.email?.includes("@") &&
-    data?.password?.length > 6 &&
+    data?.password?.length > 7 &&
     data?.phone?.length > 6 &&
     data?.gender
   ) {
@@ -132,40 +135,60 @@ const Register = () => {
               setData={setData}
               checkTheValue={input.checkTheValue}
               error={input.error}
+              messages={error?.message}
             />
           ))}
-          <div>
-            <label htmlFor="male">Male</label>
-            <input
-              onChange={(e) =>
-                setData({
-                  ...data,
-                  gender: e.target.value,
-                })
-              }
-              type="radio"
-              name="gender"
-              id="male"
-              value="male"
-            />
+          <div style={{ position: "relative", marginBottom: "40px" }}>
+            <div>
+              <label htmlFor="male">Male</label>
+              <input
+                onChange={(e) =>
+                  setData({
+                    ...data,
+                    gender: e.target.value,
+                  })
+                }
+                type="radio"
+                name="gender"
+                id="male"
+                value="male"
+              />
+            </div>
+            <div>
+              <label htmlFor="femal">Femal</label>
+              <input
+                onChange={(e) =>
+                  setData({
+                    ...data,
+                    gender: e.target.value,
+                  })
+                }
+                type="radio"
+                name="gender"
+                id="femal"
+                value="femal"
+              />
+            </div>
+            {!data.gender &&
+              error?.message &&
+              error?.message.includes(
+                "gender must be one of the following values: male, female"
+              ) && (
+                <p className="error">
+                  gender must be one of the following values: male, female
+                </p>
+              )}
           </div>
-          <div>
-            <label htmlFor="femal">Femal</label>
-            <input
-              onChange={(e) =>
-                setData({
-                  ...data,
-                  gender: e.target.value,
-                })
-              }
-              type="radio"
-              name="gender"
-              id="femal"
-              value="femal"
-            />
-          </div>
+          {error && error?.statusCode !== 400 && (
+            <>
+              <p>{error.error}</p>
+              <p>{error.message}</p>
+            </>
+          )}
+          {error === true && <p>Something wrong!</p>}
           <Button
             type="submit"
+            loading={loading}
             // disabled={!formValidation}
           >
             Register
