@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import { Input, Button } from "../Components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/services";
+import { useNavigate } from "react-router-dom";
 
 import "./Register/Register.scss";
 
 const Login = () => {
   const [data, setData] = useState({});
   const dispatch = useDispatch();
+  const error = useSelector((state) => state.auth.error);
+  const loading = useSelector((state) => state.auth.loading);
+  const navigate = useNavigate();
+
+  console.log(error);
 
   const resources = [
     {
@@ -27,7 +33,7 @@ const Login = () => {
   ];
 
   let formValidation = false;
-  if (data?.email?.includes("@") && data?.password?.length > 6) {
+  if (data?.email?.includes("@") && data?.password?.length > 7) {
     formValidation = true;
   } else {
     formValidation = false;
@@ -40,10 +46,13 @@ const Login = () => {
         <h1>Login</h1>
         <form
           className="form"
-          onSubmit={(e) => {
+          onSubmit={async (e) => {
             e.preventDefault();
-            // console.log(data);
-            dispatch(login(data));
+            await dispatch(login(data)).then((res) => {
+              if (res?.payload?.access_token) {
+                navigate("/projects");
+              }
+            });
           }}
         >
           {resources.map((input) => (
@@ -56,9 +65,19 @@ const Login = () => {
               setData={setData}
               checkTheValue={input.checkTheValue}
               error={input.error}
+              messages={error?.message}
             />
           ))}
-          <Button type="submit" disabled={!formValidation}>
+          {error && error.statusCode !== 400 && (
+            <div style={{ position: "relative" }}>
+              <p className="error">{error.message}</p>
+            </div>
+          )}
+          <Button
+            type="submit"
+            // disabled={!formValidation}
+            loading={loading}
+          >
             Login
           </Button>
         </form>

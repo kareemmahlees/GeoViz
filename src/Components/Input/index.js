@@ -11,6 +11,9 @@ const Input = ({
   setData,
   error,
   messages,
+  solid,
+  setNewData,
+  newData,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [inputBlur, setInputBlur] = useState(false);
@@ -18,7 +21,7 @@ const Input = ({
   const errorInput = !enteredValueIsValid && inputBlur;
 
   return (
-    <div className="input__control">
+    <div className={`input__control ${solid ? "solid__input" : ""}`}>
       <input
         type={
           type === "password"
@@ -32,12 +35,17 @@ const Input = ({
         name={id}
         className="input"
         value={data[id] || ""}
-        onChange={(e) =>
+        onChange={(e) => {
           setData({
             ...data,
             [id]: e.target.value,
-          })
-        }
+          });
+          setNewData &&
+            setNewData({
+              ...newData,
+              [id]: e.target.value,
+            });
+        }}
         onBlur={() => {
           setInputBlur(true);
         }}

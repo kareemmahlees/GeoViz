@@ -21,6 +21,10 @@
       font-size: 16px;
       font-weight: $ft__W__M;
       color: rgba(0, 0, 0, 0.589);
+      span {
+        font-weight: $ft__W__R;
+        font-size: 14px;
+      }
       &:first-of-type {
         color: black;
         font-weight: $ft__W__S;

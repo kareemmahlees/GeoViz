@@ -9,6 +9,7 @@ import {
   SingleLogs,
   SingleProject,
   SingleWell,
+  UpdateProject,
   WellForm,
 } from "./Pages";
 import { useSelector } from "react-redux";
@@ -21,13 +22,14 @@ const App = () => {
     <Routes>
       <Route
         path="/"
-        element={<Navigate to={token ? "projects" : "register"} />}
+        element={<Navigate to={token ? "projects" : "login"} />}
       />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route element={<Layout />}>
         <Route path="/projects" element={<Projects />} />
         <Route path="projects/:projectID" element={<SingleProject />} />
+        <Route path="projects/:projectID/edit" element={<UpdateProject />} />
         <Route path="projects/:projectID/add/:wellID" element={<WellForm />} />
         <Route path="projects/:projectID/:wellID" element={<SingleWell />} />
         <Route

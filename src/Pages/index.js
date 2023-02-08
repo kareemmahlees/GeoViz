@@ -7,3 +7,4 @@ export { default as WellForm } from "./WellForm";
 export { default as SingleWell } from "./SingleWell";
 export { default as SingleLogs } from "./SingleLogs";
 export { default as AddLogs } from "./AddLogs";
+export { default as UpdateProject } from "./UpdateProject";

@@ -1,45 +1,52 @@
 import React, { useState } from "react";
 import { Button, Input } from "../../Components";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { createWell } from "../../redux/services";
 
 import "./WellForm.scss";
 
 const WellForm = () => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState({
+    trajectory: "well trajectory",
+  });
   const location = useLocation();
-  const name = location.state?.name;
+  const { name, id } = location?.state;
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector((state) => state.wells);
   const resources = [
     {
       type: "text",
-      id: `${name}_name`,
+      id: `name`,
       placeholder: `${name} Name`,
       checkTheValue: (value) => value?.length > 0,
       error: "This filed can't be empty!",
     },
     {
       type: "text",
-      id: "location_x",
+      id: "x_location",
       placeholder: "X Location",
       checkTheValue: (value) => value?.length > 0,
       error: "This filed can't be empty!",
     },
     {
       type: "text",
-      id: "location_y",
+      id: "y_location",
       placeholder: "Y Location",
       checkTheValue: (value) => value?.length > 0,
       error: "This filed can't be empty!",
     },
     {
       type: "text",
-      id: "KD",
+      id: "kb",
       placeholder: "KD",
       checkTheValue: (value) => value?.length > 0,
       error: "This filed can't be empty!",
     },
     {
       type: "text",
-      id: "TD",
+      id: "td",
       placeholder: "TD",
       checkTheValue: (value) => value?.length > 0,
       error: "This filed can't be empty!",
@@ -51,9 +58,13 @@ const WellForm = () => {
       <h2 className="page__title">{name || "Well"} Creation</h2>
       <form
         className="form"
-        onSubmit={(e) => {
+        onSubmit={async (e) => {
           e.preventDefault();
-          console.log(data);
+          await dispatch(createWell({ data, id })).then((res) => {
+            if (res?.payload?.id) {
+              navigate(`/projects/${id}`);
+            }
+          });
         }}
       >
         {resources.map((input) => (
@@ -66,9 +77,10 @@ const WellForm = () => {
             setData={setData}
             checkTheValue={input.checkTheValue}
             error={input.error}
+            solid={true}
           />
         ))}
-        <div>
+        {/* <div>
           <label htmlFor="vertical">Vertical</label>
           <input
             onChange={(e) =>
@@ -97,8 +109,10 @@ const WellForm = () => {
             id="deviated"
             value="deviated"
           />
-        </div>
-        <Button type="submit">Create</Button>
+        </div> */}
+        <Button solid={true} type="submit" loading={loading}>
+          Create
+        </Button>
       </form>
     </div>
   );

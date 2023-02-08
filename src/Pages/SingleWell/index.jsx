@@ -1,8 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import { ProjectCard } from "../../Components";
+import { getWellDetails } from "../../redux/services";
+import { useSelector, useDispatch } from "react-redux";
 
 const SingleWell = () => {
+  const dispatch = useDispatch();
+  const { loading, details } = useSelector((state) => state.wells);
+  const id = useParams().wellID;
   const data = [
     {
       id: 1,
@@ -51,9 +56,25 @@ const SingleWell = () => {
     },
   ];
 
+  useEffect(() => {
+    if (id) {
+      dispatch(getWellDetails(id));
+    }
+  }, [dispatch, id]);
+
+  // if (singleProject?.error) {
+  //   return <h1>Error...!</h1>;
+  // }
+
+  if (loading) {
+    return <h1>Loading...!</h1>;
+  }
+
+  console.log(details);
+
   return (
     <div>
-      <h2 className="page__title">Well One</h2>
+      <h2 className="page__title">{details?.name}</h2>
       <div className="single__project__options">
         <Link
           to="add/lgos"

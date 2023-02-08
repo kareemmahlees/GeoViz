@@ -19,13 +19,43 @@ const ProjectCard = ({
     <Link to={`${id}`} className="project__card">
       <ul className="project__card__details">
         {name && <li>{name}</li>}
-        {description && <li>{description}</li>}
-        {location && <li>{location}</li>}
+        {description && (
+          <li>
+            <span>Description: </span>
+            {description}
+          </li>
+        )}
+        {location && (
+          <li>
+            <span>Location: </span>
+            {location}
+          </li>
+        )}
         {rol && <li>{rol}</li>}
-        {location_x && <li>{location_x}</li>}
-        {location_y && <li>{location_y}</li>}
-        {KD && <li>{KD}</li>}
-        {TD && <li>{TD}</li>}
+        {location_x && (
+          <li>
+            <span>Location-x: </span>
+            {location_x}
+          </li>
+        )}
+        {location_y && (
+          <li>
+            <span>Location-y: </span>
+            {location_y}
+          </li>
+        )}
+        {KD && (
+          <li>
+            <span>KD: </span>
+            {KD}
+          </li>
+        )}
+        {TD && (
+          <li>
+            <span>TD: </span>
+            {TD}
+          </li>
+        )}
         {Trajectory && <li>{Trajectory}</li>}
       </ul>
     </Link>

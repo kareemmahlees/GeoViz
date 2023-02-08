@@ -16,4 +16,7 @@
   &.loading {
     cursor: not-allowed;
   }
+  &.solid {
+    background-color: $main__color;
+  }
 }

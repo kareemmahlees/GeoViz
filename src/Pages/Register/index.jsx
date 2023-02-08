@@ -179,7 +179,7 @@ const Register = () => {
                 </p>
               )}
           </div>
-          {error && error?.statusCode !== 400 && (
+          {error && error.message === "User already registered" && (
             <>
               <p>{error.error}</p>
               <p>{error.message}</p>

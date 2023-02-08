@@ -1,2 +1,9 @@
 export { register } from "./register";
 export { login } from "./login";
+export { getAllProjects } from "./getAllProjects";
+export { addProject } from "./addProject";
+export { getProjectDetails } from "./getProjectDetails";
+export { DeleteProject } from "./DeleteProject";
+export { updateProject } from "./updateProject";
+export { createWell } from "./createWell";
+export { getWellDetails } from "./getWellDetails";

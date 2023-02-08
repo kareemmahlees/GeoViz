@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Input } from "../../Components";
-import { addProject } from "../../redux/services";
+import { updateProject } from "../../redux/services";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import "./NewProject.scss";
-
-const NewProject = () => {
-  const [data, setData] = useState({});
+const UpdateProject = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loading, error } = useSelector((state) => state.projects);
+  const { loading, error, singleProject } = useSelector(
+    (state) => state?.projects
+  );
+  const [data, setData] = useState(singleProject);
+  const [newData, setNewData] = useState({});
   const resources = [
     {
       type: "text",
@@ -37,14 +38,16 @@ const NewProject = () => {
 
   return (
     <div>
-      <h2 className="page__title">Create New Project</h2>
+      <h2 className="page__title">Update {singleProject?.name}</h2>
       <form
         className="form"
         onSubmit={async (e) => {
           e.preventDefault();
-          await dispatch(addProject(data)).then((res) => {
-            if (res?.payload?.created_at) {
-              navigate("/projects");
+          await dispatch(
+            updateProject({ data: newData, id: singleProject.id })
+          ).then((res) => {
+            if (res?.payload?.id) {
+              navigate(`/projects/${res?.payload?.id}`);
             }
           });
         }}
@@ -57,6 +60,8 @@ const NewProject = () => {
             placeholder={input.placeholder}
             data={data}
             setData={setData}
+            setNewData={setNewData}
+            newData={newData}
             checkTheValue={input.checkTheValue}
             error={input.error}
             solid={true}
@@ -94,11 +99,11 @@ const NewProject = () => {
         </div> */}
         {error && <p>Something wrong!</p>}
         <Button loading={loading} solid={true} type="submit">
-          Create
+          Update
         </Button>
       </form>
     </div>
   );
 };
 
-export default NewProject;
+export default UpdateProject;
