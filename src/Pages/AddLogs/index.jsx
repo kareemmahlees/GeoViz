@@ -169,7 +169,7 @@ const AddLogs = () => {
       </CSVReader>
       <div className="line" />
       <h2 className="section__title">Preview</h2>
-      {/* <Table headers={file?.data[0]} body={file?.data.slice(1)} /> */}
+      <Table headers={file?.data[0]} body={file?.data.slice(1)} />
       <div className="line" />
       <button>Save</button>
       <button>cancel</button>

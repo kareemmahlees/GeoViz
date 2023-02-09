@@ -3,6 +3,7 @@ import { register, login } from "../services";
 
 const initialState = {
   user: JSON.parse(localStorage.getItem("user")) || null,
+  avatar: localStorage.getItem("avatar"),
   token: localStorage.getItem("token") || null,
   loading: false,
   error: null,
@@ -23,6 +24,8 @@ const authSlice = createSlice({
       if (action.payload.statusCode) {
         state.error = action.payload;
       } else {
+        state.avatar = action.payload.avatar_url;
+        localStorage.setItem("avatar", action.payload.avatar_url);
         // state.user = {
         //   first_name: action?.payload?.user_metadata?.first_name,
         //   last_name: action?.payload?.user_metadata?.last_name,
