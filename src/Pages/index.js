@@ -8,3 +8,7 @@ export { default as SingleWell } from "./SingleWell";
 export { default as SingleLogs } from "./SingleLogs";
 export { default as AddLogs } from "./AddLogs";
 export { default as UpdateProject } from "./UpdateProject";
+export { default as UpdateWell } from "./UpdateWell";
+export { default as UpdateLog } from "./UpdateLog";
+export { default as Loading } from "./Loading";
+export { default as Error } from "./Error";

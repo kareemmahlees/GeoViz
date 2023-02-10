@@ -1,60 +1,18 @@
 import React, { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { ProjectCard } from "../../Components";
-import { getWellDetails } from "../../redux/services";
+import { getWellDetails, deleteWell } from "../../redux/services";
 import { useSelector, useDispatch } from "react-redux";
+import { Error, Loading } from "../";
 
 const SingleWell = () => {
   const dispatch = useDispatch();
-  const { loading, details } = useSelector((state) => state.wells);
+  const { loading, details, deleteing, error, msg } = useSelector(
+    (state) => state.wells
+  );
   const id = useParams().wellID;
-  const data = [
-    {
-      id: 1,
-      name: "Logs",
-      // location_x: "25615616",
-      // location_y: "25615616",
-      // KD: "21das61das",
-      // TD: "21das61das",
-      // Trajectory: "Deviated",
-    },
-    {
-      id: 2,
-      name: "Tops",
-      // location_x: "25615616",
-      // location_y: "25615616",
-      // KD: "21das61das",
-      // TD: "21das61das",
-      // Trajectory: "Vertical",
-    },
-    {
-      id: 3,
-      name: "Completions",
-      // location_x: "25615616",
-      // location_y: "25615616",
-      // KD: "21das61das",
-      // TD: "21das61das",
-      // Trajectory: "Deviated",
-    },
-    {
-      id: 4,
-      name: "Casing",
-      // location_x: "25615616",
-      // location_y: "25615616",
-      // KD: "21das61das",
-      // TD: "21das61das",
-      // Trajectory: "Deviated",
-    },
-    {
-      id: 5,
-      name: "Other",
-      // location_x: "25615616",
-      // location_y: "25615616",
-      // KD: "21das61das",
-      // TD: "21das61das",
-      // Trajectory: "Deviated",
-    },
-  ];
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     if (id) {
@@ -62,15 +20,9 @@ const SingleWell = () => {
     }
   }, [dispatch, id]);
 
-  // if (singleProject?.error) {
-  //   return <h1>Error...!</h1>;
-  // }
+  if (error) return <Error />;
 
-  if (loading) {
-    return <h1>Loading...!</h1>;
-  }
-
-  console.log(details);
+  if (loading) return <Loading />;
 
   return (
     <div>
@@ -79,61 +31,83 @@ const SingleWell = () => {
         <Link
           to="add/lgos"
           className="project__main__button"
-          state={{ name: "Logs" }}
+          state={{ name: "Logs", id }}
         >
           Logs
         </Link>
         <Link
           to="add/tops"
           className="project__main__button"
-          state={{ name: "Tops" }}
+          state={{ name: "Tops", id }}
         >
           Tops
         </Link>
         <Link
           to="add/completions"
           className="project__main__button"
-          state={{ name: "Completions" }}
+          state={{ name: "Completions", id }}
         >
           Completions
         </Link>
         <Link
           to="add/casing"
           className="project__main__button"
-          state={{ name: "Casing" }}
+          state={{ name: "Casing", id }}
         >
           Casing
         </Link>
         <Link
           to="add/other"
           className="project__main__button"
-          state={{ name: "Other" }}
+          state={{ name: "Other", id }}
         >
           Other
         </Link>
       </div>
       <div className="line" />
       <h2 className="section__title">Associated Data</h2>
-      {!data.length && (
+      {!details?.logs?.length && (
         <p className="empty">There's no data associated into this project</p>
       )}
-      <div className="projects__list">
-        {data.map((project) => (
-          <ProjectCard
-            key={project.id}
-            id={project.id}
-            name={project.name}
-            location_x={project.location_x}
-            location_y={project.location_y}
-            KD={project.KD}
-            TD={project.TD}
-            Trajectory={project.Trajectory}
-          />
-        ))}
-      </div>
+      {details?.logs && (
+        <div className="projects__list">
+          {details?.logs.map((project) => (
+            <ProjectCard
+              key={project.id}
+              id={project.id}
+              name={project.name}
+              location_x={project.location_x}
+              location_y={project.location_y}
+              KD={project.KD}
+              TD={project.TD}
+              Trajectory={project.Trajectory}
+            />
+          ))}
+        </div>
+      )}
       <div className="line" />
-      <Link to="/">Edit</Link>
-      <button>Delete</button>
+      <Link to="edit" className="main__button solid">
+        Edit
+      </Link>
+      <button
+        type="button"
+        className="delete__button"
+        onClick={async () => {
+          await dispatch(deleteWell(id)).then((res) => {
+            if (res?.error) {
+              navigate(
+                `/projects/${location.pathname.slice(
+                  location.pathname.indexOf("/", 2) + 1,
+                  location.pathname.lastIndexOf("/")
+                )}`
+              );
+            }
+          });
+        }}
+      >
+        {deleteing ? "Deleting...!" : "Delete"}
+      </button>
+      {msg && <p>{msg.message}</p>}
     </div>
   );
 };

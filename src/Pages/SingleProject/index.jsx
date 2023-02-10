@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { ProjectCard } from "../../Components";
 import { getProjectDetails, DeleteProject } from "../../redux/services";
 import { useSelector, useDispatch } from "react-redux";
+import { Error, Loading } from "../";
 
 import "./SingleProject.scss";
 
@@ -13,53 +14,6 @@ const SingleProject = () => {
   );
   const id = useParams().projectID;
   const navigate = useNavigate();
-  // const data = [
-  //   {
-  //     id: 1,
-  //     name: "well 1",
-  //     location_x: "25615616",
-  //     location_y: "25615616",
-  //     KD: "21das61das",
-  //     TD: "21das61das",
-  //     Trajectory: "Deviated",
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Documents 2",
-  //     location_x: "25615616",
-  //     location_y: "25615616",
-  //     KD: "21das61das",
-  //     TD: "21das61das",
-  //     Trajectory: "Vertical",
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "Financial 2",
-  //     location_x: "25615616",
-  //     location_y: "25615616",
-  //     KD: "21das61das",
-  //     TD: "21das61das",
-  //     Trajectory: "Deviated",
-  //   },
-  //   {
-  //     id: 4,
-  //     name: "Financial 2",
-  //     location_x: "25615616",
-  //     location_y: "25615616",
-  //     KD: "21das61das",
-  //     TD: "21das61das",
-  //     Trajectory: "Deviated",
-  //   },
-  //   {
-  //     id: 5,
-  //     name: "Financial 2",
-  //     location_x: "25615616",
-  //     location_y: "25615616",
-  //     KD: "21das61das",
-  //     TD: "21das61das",
-  //     Trajectory: "Deviated",
-  //   },
-  // ];
 
   useEffect(() => {
     if (id) {
@@ -67,13 +21,9 @@ const SingleProject = () => {
     }
   }, [dispatch, id]);
 
-  if (singleProject?.error) {
-    return <h1>Error...!</h1>;
-  }
+  if (singleProject?.error) return <Error />;
 
-  if (loading) {
-    return <h1>Loading...!</h1>;
-  }
+  if (loading) return <Loading />;
   return (
     <div>
       <h2 className="page__title">{singleProject?.name}</h2>
@@ -134,8 +84,11 @@ const SingleProject = () => {
         ))}
       </div>
       <div className="line" />
-      <Link to="edit">Edit</Link>
+      <Link className="main__button solid" to="edit">
+        Edit
+      </Link>
       <button
+        className="delete__button"
         onClick={async (e) => {
           await dispatch(DeleteProject(id)).then((res) => {
             if (!res?.payload?.error) {

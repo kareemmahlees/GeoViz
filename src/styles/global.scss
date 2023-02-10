@@ -89,3 +89,19 @@ ul {
   color: #621414;
   font-weight: 500;
 }
+.delete__button {
+  all: unset;
+  cursor: pointer;
+  padding: 15px 30px;
+  border-radius: 4px;
+  font-size: $ft__20;
+  font-weight: $ft__W__S;
+  border-radius: 50px;
+  // border: 2px solid $color__white;
+  color: #fff;
+  background-color: rgba(255, 0, 0, 0.651);
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}

@@ -2,24 +2,23 @@ import React, { useState } from "react";
 import { Button, Input } from "../../Components";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { createWell } from "../../redux/services";
+import { updateWell } from "../../redux/services";
 
-import "./WellForm.scss";
-
-const WellForm = () => {
-  const [data, setData] = useState({
-    trajectory: "well trajectory",
-  });
+const UpdateWell = () => {
   const location = useLocation();
-  const { name, id } = location?.state;
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loading } = useSelector((state) => state.wells);
+  const { loading, details } = useSelector((state) => state.wells);
+  const [data, setData] = useState(details || {});
+  const [newData, setNewData] = useState({});
+
+  console.log(details.id);
+
   const resources = [
     {
       type: "text",
       id: `name`,
-      placeholder: `${name} Name`,
+      placeholder: `Name`,
       checkTheValue: (value) => value?.length > 0,
       error: "This filed can't be empty!",
     },
@@ -55,16 +54,36 @@ const WellForm = () => {
 
   return (
     <div>
-      <h2 className="page__title">{name || "Well"} Creation</h2>
+      <h2 className="page__title">{details?.name || "Well"} Creation</h2>
       <form
         className="form"
+        // onSubmit={async (e) => {
+        //   e.preventDefault();
+        //   await dispatch(updateWell({ newData, id: details.id })).then(
+        //     (res) => {
+        //       // if (res?.payload?.id) {
+        //       //   navigate(
+        //       //     `${location.pathname.slice(
+        //       //       0,
+        //       //       location.pathname.lastIndexOf("/")
+        //       //     )}`
+        //       //   );
+        //       // }
+
+        //     }
+        //   );
+        // }}
         onSubmit={async (e) => {
           e.preventDefault();
-          await dispatch(createWell({ data, id })).then((res) => {
-            if (res?.payload?.id) {
-              navigate(`/projects/${id}`);
+          await dispatch(updateWell({ data: newData, id: details?.id })).then(
+            (res) => {
+              if (res?.payload?.id) {
+                navigate(
+                  `/projects/${res.payload.project_id}/${res.payload.id}`
+                );
+              }
             }
-          });
+          );
         }}
       >
         {resources.map((input) => (
@@ -75,6 +94,8 @@ const WellForm = () => {
             placeholder={input.placeholder}
             data={data}
             setData={setData}
+            setNewData={setNewData}
+            newData={newData}
             checkTheValue={input.checkTheValue}
             error={input.error}
             solid={true}
@@ -111,11 +132,11 @@ const WellForm = () => {
           />
         </div> */}
         <Button solid={true} type="submit" loading={loading}>
-          Create
+          Update
         </Button>
       </form>
     </div>
   );
 };
 
-export default WellForm;
+export default UpdateWell;

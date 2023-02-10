@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Input, Button } from "../../Components";
 import { useDispatch, useSelector } from "react-redux";
-import { register } from "../../redux/services";
+import { register, login } from "../../redux/services";
 
 import "./Register.scss";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [data, setData] = useState({});
@@ -13,6 +14,8 @@ const Register = () => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.auth.loading);
   const error = useSelector((state) => state.auth.error);
+  const navigate = useNavigate();
+  const [loginNow, setLoginNow] = useState(false);
   // const user = useSelector((state) => state.auth.user);
 
   const resources = [
@@ -89,6 +92,8 @@ const Register = () => {
     formValidation = false;
   }
 
+  console.log(loginNow);
+
   return (
     <div className="register__page">
       {/* <div className="clip-path"></div> */}
@@ -96,10 +101,20 @@ const Register = () => {
         <h1>Register</h1>
         <form
           className="form"
-          onSubmit={(e) => {
+          onSubmit={async (e) => {
             e.preventDefault();
-            // console.log(data);
-            dispatch(register(data));
+            await dispatch(register(data)).then((res) => {
+              if (!res?.payload?.error) {
+                setLoginNow(true);
+              }
+            });
+            await dispatch(
+              login({ email: data.email, password: data.password })
+            ).then((res) => {
+              if (res?.payload?.access_token) {
+                navigate("/projects");
+              }
+            });
           }}
         >
           <label htmlFor="avatar" className="avatar">

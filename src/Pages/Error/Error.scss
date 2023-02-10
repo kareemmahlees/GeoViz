@@ -1,0 +1,23 @@
+@import "../../styles/variables.scss";
+
+.error__page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(100vh - 40px);
+  flex-direction: column;
+  .error__msg {
+    padding: 20px;
+    border: 2px solid rgb(177, 0, 0);
+    margin-bottom: 40px;
+    color: rgb(177, 0, 0);
+    background-color: rgba(255, 0, 0, 0.24);
+    font-size: 24px;
+    font-weight: 500;
+    border-radius: 4px;
+  }
+  .main__button {
+    border-radius: 4px;
+  }
+}

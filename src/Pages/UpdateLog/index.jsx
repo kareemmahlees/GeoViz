@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Table } from "../../Components";
 import { useSelector, useDispatch } from "react-redux";
-import { createLogs } from "../../redux/services";
+import { getLogDetails, updateLog } from "../../redux/services";
+import Papa from "papaparse";
 import {
   useCSVReader,
   lightenDarkenColor,
   formatFileSize,
 } from "react-papaparse";
-
-import "./AddLogs.scss";
 
 const GREY = "#CCC";
 const GREY_LIGHT = "rgba(255, 255, 255, 0.4)";
@@ -84,7 +83,7 @@ const styles = {
   },
 };
 
-const AddLogs = () => {
+const UpdateLog = () => {
   const location = useLocation();
   const name = location.state?.name;
   const [file, setFile] = useState(null);
@@ -97,7 +96,30 @@ const AddLogs = () => {
   const locatin = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loading, error, msg } = useSelector((state) => state.logs);
+  const { loading, error, msg, details, saving } = useSelector(
+    (state) => state.logs
+  );
+
+  // console.log(locatin.pathname.split("/")[4]);
+
+  useEffect(() => {
+    dispatch(getLogDetails(locatin.pathname.split("/")[4]));
+  }, [dispatch, locatin.pathname]);
+
+  useEffect(() => {
+    if (details) {
+      setMainFile(details);
+      Papa?.parse(details, {
+        complete: function (results) {
+          setFile(results);
+        },
+      });
+    }
+  }, [details]);
+
+  if (loading) {
+    return <h1>Loading...!</h1>;
+  }
 
   return (
     <div>
@@ -172,33 +194,30 @@ const AddLogs = () => {
       </CSVReader>
       <div className="line" />
       <h2 className="section__title">Preview</h2>
-      <Table headers={file?.data[0]} body={file?.data.slice(1)} />
+      {file && <Table headers={file?.data[0]} body={file?.data.slice(1)} />}
       <div className="line" />
       <button
         type="button"
         className="main__button solid"
         onClick={async () => {
           await dispatch(
-            createLogs({ file: mainFile, id: locatin.state.id })
+            updateLog({ file: mainFile, id: locatin.pathname.split("/")[4] })
           ).then((res) => {
-            if (res?.payload?.message) {
-              return;
-            }
-            if ((!res?.payload?.error && !res?.error) || msg) {
+            if (!res?.payload?.error && !res?.error) {
               navigate(
-                locatin.pathname.slice(0, locatin.pathname.lastIndexOf("/") - 4)
+                locatin.pathname.slice(0, locatin.pathname.lastIndexOf("/"))
               );
             }
+            console.log(res);
           });
         }}
       >
-        {loading ? "Saving...!" : "Save"}
+        {saving ? "Saving...!" : "save"}
       </button>
-      <button className="delete__button">cancel</button>
       {error && <p>{error.message}</p>}
       {msg && <p>{msg}</p>}
     </div>
   );
 };
 
-export default AddLogs;
+export default UpdateLog;
