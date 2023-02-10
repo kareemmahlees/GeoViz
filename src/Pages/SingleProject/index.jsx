@@ -9,7 +9,7 @@ import "./SingleProject.scss";
 
 const SingleProject = () => {
   const dispatch = useDispatch();
-  const { singleProject, loading, deleteLoading } = useSelector(
+  const { singleProject, loading, deleteLoading, error } = useSelector(
     (state) => state.projects
   );
   const id = useParams().projectID;
@@ -21,7 +21,7 @@ const SingleProject = () => {
     }
   }, [dispatch, id]);
 
-  if (singleProject?.error) return <Error />;
+  if (singleProject?.error || error) return <Error />;
 
   if (loading) return <Loading />;
   return (

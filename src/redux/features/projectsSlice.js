@@ -8,7 +8,7 @@ import {
 } from "../services";
 
 const initialState = {
-  prjects: [],
+  prjects: null,
   loading: false,
   error: null,
   singleProject: null,
@@ -38,8 +38,8 @@ const projectsSlice = createSlice({
     },
     // Add Project:===
     [addProject.pending]: (state) => {
-      state.loading = true;
       state.error = false;
+      state.loading = true;
     },
     [addProject.fulfilled]: (state, action) => {
       state.loading = false;
@@ -52,8 +52,8 @@ const projectsSlice = createSlice({
     },
     // Get Project Details:===
     [getProjectDetails.pending]: (state) => {
-      state.loading = true;
       state.error = false;
+      state.loading = true;
     },
     [getProjectDetails.fulfilled]: (state, action) => {
       state.loading = false;
@@ -61,9 +61,9 @@ const projectsSlice = createSlice({
       state.singleProject = action.payload;
     },
     [getProjectDetails.rejected]: (state) => {
+      state.error = true;
       state.loading = false;
       state.projects = null;
-      state.error = true;
     },
     // Delete Project:====
     [DeleteProject.pending]: (state) => {
