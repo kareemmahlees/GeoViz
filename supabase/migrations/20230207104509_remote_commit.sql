@@ -245,6 +245,10 @@ CREATE POLICY "allow all operations" ON "public"."wells" TO "anon", "authenticat
 CREATE POLICY "get user profile" ON "public"."profiles" TO "anon", "authenticated" USING (true);
 
 
+CREATE POLICY "allow all operations" on "storage"."objects" to "anon","authenticated" USING (true);
+
+CREATE POLICY "allow all operations" on "storage"."buckets" to "anon","authenticated" USING (true);
+
 --
 -- Name: logs; Type: ROW SECURITY; Schema: public; Owner: supabase_admin
 --

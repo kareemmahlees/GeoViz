@@ -1,4 +1,4 @@
-FROM node:18 AS development
+FROM node:latest AS development
 
 WORKDIR /usr/src/app
 

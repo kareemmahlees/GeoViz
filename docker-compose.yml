@@ -6,3 +6,11 @@ services:
         restart: always
         ports:
             - 8000:8000
+        environment:
+            - NODE_ENV=development
+        networks:
+            - supabase_network_geoviz
+
+networks:
+    supabase_network_geoviz:
+        external: true
