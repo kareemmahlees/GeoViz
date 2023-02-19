@@ -5,3 +5,5 @@ private.pem
 .eslintrc.js
 .gitignore
 .prettierrrc
+supabase/branches
+supabase/temp

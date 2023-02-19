@@ -136,7 +136,6 @@ CREATE TABLE "public"."wells" (
     "kb" character varying,
     "td" character varying,
     "trajectory" character varying,
-    "log_file_id" "uuid",
     "id" "uuid" DEFAULT "extensions"."uuid_generate_v4"() NOT NULL,
     "project_id" "uuid",
     "user_id" "uuid"
